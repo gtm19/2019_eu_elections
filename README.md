@@ -13,4 +13,4 @@ After a lot of Googling, there doesn't seem to be a centrally held list of candi
 
 Fortunately, several journalists had taken the time to list the candidates on their websites. A bit of extraction using [`rvest`](https://blog.rstudio.com/2014/11/24/rvest-easy-web-scraping-with-r/), and tidying with the [`tidyverse`](https://www.tidyverse.org/), and I produced a [clean list of candidates](data/2019_eu_candidates_uk.csv), including their region, party, and order (which becomes important when the votes are in and seats are being allocated). I also added indicators of whether the candidate has been withdrawn, and another "notable" column for a few big names who the press will no doubt be keeping a keen eye on.
 
-The R script I used to produce this `.csv` file can be found [here](data/cleansing scripts/candidates.R).
+The R script I used to produce this `.csv` file can be found [here](data/cleansing_scripts/candidates.R).
