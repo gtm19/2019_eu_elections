@@ -1,7 +1,7 @@
 # 2019 EU Elections in the United Kingdom
 ## Getting, cleansing, and analysing the data for the elections which weren't supposed to be happening (but here we are)
 
-Realising that I knew literally nothing about how the European Parliament elections work, and given that it will soon be utterly useless information for me, here is my attempt to obtain, tidy, and analyse whatever data I can get my hands on in relation to the elections taking place in May 2019.
+Realising that I knew literally nothing about how the European Parliament elections work, and in spite of the fact that it will soon be utterly useless information for me, here is my attempt to obtain, tidy, and analyse whatever data I can get my hands on in relation to the elections taking place in May 2019.
 
 Once I have the data (if I have time) the idea is to model the potential outcomes of the elections.
 
