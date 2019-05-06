@@ -30,13 +30,16 @@ df <-
   select(-tag, -text) %>%  # no longer needed
   mutate_all(str_trim) %>%  # bye bye whitespace
   separate_rows(candidate, sep = "\n") %>%  # 1 row per candidate
-  mutate(withdrawn = str_detect(candidate, "(withdrawn)"),  # highlight withdrawn candidates
-         candidate = str_remove(candidate, " ?\\(withdrawn\\)")) %>%
-  group_by(region, party) %>% 
-  mutate(order = 1:n()) %>%  # add the order
-  ungroup() %>% 
   mutate(party = fct_collapse(party, Conservative = c("Conservative", "Conservatives")),
-         region = fct_infreq(region, ordered = TRUE))
+         region = fct_infreq(region, ordered = TRUE)) %>% 
+  mutate(withdrawn = str_detect(candidate, "(withdrawn)"),  # highlight withdrawn candidates
+         candidate = str_remove(candidate, " ?\\(withdrawn\\)"),
+         on_the_ballot = ifelse(party == "Independent",
+                                candidate,
+                                as.character(party))) %>%
+  group_by(region, on_the_ballot) %>% 
+  mutate(order = 1:n()) %>%  # add the order
+  ungroup()
 
 # Add some notable candidates
 query <- paste(
