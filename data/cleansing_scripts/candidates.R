@@ -57,7 +57,15 @@ df <-
   df %>% 
   mutate(notable = str_detect(candidate, query)) 
 
-# Export the thing
+# Add Region ID
+df <-
+  df %>% 
+  left_join(df %>% 
+              distinct(region) %>% 
+              arrange(as.character(region)) %>% 
+              mutate(region_id = 1:nrow(.))) %>% 
+  select(region_id, everything())
 
+# Export the thing
 df %>% 
   write_csv(here("data/2019_eu_candidates_uk.csv"))
