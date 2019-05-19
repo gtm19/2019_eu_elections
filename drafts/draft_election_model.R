@@ -51,16 +51,13 @@ elect <- function(candidate_df = candidates,
       # Number of candidates running for each Party
       max_seats <- table(cand_df$on_the_ballot)
       
-      # Split candidate table by Party (for subsetting soon)
-      cand_df <- split(cand_df, cand_df$on_the_ballot)
-      
       # Allocate seats to Parties by D'Hondt methods
       allocate_seats <- allocate_dhondt(vote_dist[[reg]], max_seats, seats_by_region[[reg]])
       
       # Pick winning candidates from df
       who_won <-
         mapply(function(num, party) {
-          cand_df[[party]][1:num, ]
+          cand_df[cand_df$on_the_ballot == party,][1:num, ]
         }, allocate_seats, names(allocate_seats), SIMPLIFY = FALSE)
       
       who_won <- do.call(rbind, who_won)
