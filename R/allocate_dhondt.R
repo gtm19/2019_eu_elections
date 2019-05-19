@@ -24,11 +24,13 @@ allocate_dhondt <- function(.votes, .max_seats, .num_of_seats) {
   
   for (seat in 1:.num_of_seats){
     
-    lead <- names(sort(-(votes[seats < .max_seats] / (seats[seats < .max_seats] + 1)))[1])
+    lead <- names(sort(-(.votes[seats < .max_seats] / (seats[seats < .max_seats] + 1)))[1])
     
     seats[lead] <- seats[lead] + 1
     
   }
+  
+  seats <- seats[seats > 0]
   
   return(seats)
   
